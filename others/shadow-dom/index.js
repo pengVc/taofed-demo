@@ -26,3 +26,11 @@ app.addEventListener('click', (event) => {
     'event.currentTarget': event.currentTarget,
   })
 })
+
+
+document.body.addEventListener('click', (event) => {
+  console.log('document.body clicked listener', {
+    'event.target': event.target,
+    'event.currentTarget': event.currentTarget,
+  })
+})
