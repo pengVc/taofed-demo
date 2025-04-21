@@ -1,14 +1,12 @@
 class BadButton {
   private lamp: BadLamp
-  private activated: boolean
 
   constructor(lamp: BadLamp) {
     this.lamp = lamp
-    this.activated = false
   }
 
   pull() {
-    if (this.activated) {
+    if (this.lamp.activated) {
       this.lamp.turnOff()
     } else {
       this.lamp.turnOn()
@@ -17,13 +15,17 @@ class BadButton {
 }
 
 class BadLamp {
+  activated: boolean
+
   constructor() {}
 
   turnOn() {
+    this.activated = true
     console.log('light is on')
   }
 
   turnOff() {
+    this.activated = false
     console.log('light is off')
   }
 }

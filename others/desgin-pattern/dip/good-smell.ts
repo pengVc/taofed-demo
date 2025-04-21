@@ -1,4 +1,6 @@
 abstract class SwitchableDevice {
+  abstract activated: boolean
+
   abstract turnOn(): void
 
   abstract turnOff(): void
@@ -6,15 +8,13 @@ abstract class SwitchableDevice {
 
 class Button {
   private device: SwitchableDevice
-  private activated: boolean
 
   constructor(device: SwitchableDevice) {
     this.device = device
-    this.activated = false
   }
 
   pull() {
-    if (this.activated) {
+    if (this.device.activated) {
       this.device.turnOff()
     } else {
       this.device.turnOn()
@@ -23,11 +23,15 @@ class Button {
 }
 
 class Lamp extends SwitchableDevice {
+  activated: boolean = false
+
   turnOn() {
+    this.activated = true
     console.log('light is on')
   }
 
   turnOff() {
+    this.activated = false
     console.log('light is off')
   }
 }
